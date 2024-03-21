@@ -1,3 +1,5 @@
+package gogl;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -52,7 +54,7 @@ public class Main {
         switch (number) {
             case 1:
                 try {
-                    File file = new File("ranglijst.csv");
+                    File file = new File("data/ranglijst.csv");
                     Scanner scanner = new Scanner(file);
 
                     while (scanner.hasNextLine()) {
