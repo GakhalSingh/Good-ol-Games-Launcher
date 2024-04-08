@@ -127,5 +127,6 @@ public class Main {
 
     public static void showMenuSales() {
         // Implement showMenuSales method
+        // infor
     }
 }
