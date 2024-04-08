@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 class HomePage{
-    int number;
+    private Scanner scanner;
+
     public HomePage(){
     System.out.println("Welkom in de GoG dashboard!");
     System.out.println("------------------------------");
@@ -25,7 +26,26 @@ class HomePage{
     System.out.println("2 - Reviews");
     System.out.println("3 - Sales");
 
-    number = scanner.nextInt();
+    int number = scanner.nextInt();
+
+        switch (number) {
+            case 1:
+                Ranglijsten ranglijsten = new Ranglijsten();
+                ranglijsten.showMenuRanglijst();
+                break;
+            case 2:
+                Reviews reviews = new Reviews();
+                reviews.showMenuReviews();
+                break;
+            case 3:
+                showMenuSales();
+                break;
+            default:
+                System.out.println("Invoer niet herkend, probeer het opnieuw.");
+                new HomePage(); // Restart homepage if invalid input
+        }
+
+        scanner.close();
     }
 }
 
@@ -91,7 +111,7 @@ class Reviews {
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("CSV bestand niet gevonden.");
-            homePage();
+            HomePage();
         }
     }
 }
@@ -110,23 +130,6 @@ public class Main {
         Ranglijsten ranglijsten = new Ranglijsten();
         Reviews reviews = new Reviews();
         homePage();
-
-        switch (number) {
-            case 1:
-
-                ranglijsten;
-                break;
-            case 2:
-                showMenuReviews();
-                break;
-            case 3:
-                showMenuSales();
-                break;
-            default:
-                System.out.println("Invoer niet herkent, probeer het opnieuw.");
-                showMenu();
-        }
-
         scanner.close();
     }
 
