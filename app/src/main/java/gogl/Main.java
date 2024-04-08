@@ -76,7 +76,31 @@ class Ranglijsten{
 
 }
 
+class Reviews {
+    public showMenuReviews() {
+        // wipp
+        try {
+            File file = new File("reviews.csv");
+            Scanner scanner = new Scanner(file);
 
+            while (scanner.hasNextLine()) {
+                String data = scanner.nextLine();
+                System.out.println(data); // Print each line from the CSV file
+            }
+
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("CSV bestand niet gevonden.");
+            homePage();
+        }
+    }
+}
+
+public static void showMenuSales() {
+    // Implement showMenuSales method
+    // infor
+}
+}
 
 
 public class Main {
@@ -84,6 +108,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         HomePage homePage = new HomePage();
         Ranglijsten ranglijsten = new Ranglijsten();
+        Reviews reviews = new Reviews();
         homePage();
 
         switch (number) {
@@ -107,26 +132,4 @@ public class Main {
 
 
 
-    public static void showMenuReviews() {
-        // wipp
-        try {
-            File file = new File("reviews.csv");
-            Scanner scanner = new Scanner(file);
 
-            while (scanner.hasNextLine()) {
-                String data = scanner.nextLine();
-                System.out.println(data); // Print each line from the CSV file
-            }
-
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("CSV bestand niet gevonden.");
-            showMenu();
-        }
-    }
-
-    public static void showMenuSales() {
-        // Implement showMenuSales method
-        // infor
-    }
-}
