@@ -38,7 +38,7 @@ class HomePage{
                 reviews.showMenuReviews();
                 break;
             case 3:
-                showMenuSales();
+            //    showMenuSales();
                 break;
             default:
                 System.out.println("Invoer niet herkend, probeer het opnieuw.");
@@ -50,15 +50,17 @@ class HomePage{
 }
 
 class Ranglijsten{
-    int number;
-
-    public MenuRanglijst() {
+    private Scanner scanner;
+    public Ranglijsten() {
+        scanner = new Scanner(System.in);
+    }
+    public void showMenuRanglijst() {
     System.out.println("Selecteer een sorteer methode.");
     System.out.println("1 - Geen");
     System.out.println("2 - Rating Hoog - Laag");
     System.out.println("3 - Rating Laag - Hoog");
     System.out.println("4 - Terug naar menu");
-    number = scanner.nextInt();
+    int number = scanner.nextInt();
 
     switch (number) {
         case 1:
@@ -74,19 +76,17 @@ class Ranglijsten{
                 scanner.close();
             } catch (FileNotFoundException e) {
                 System.out.println("CSV bestand niet gevonden 😔");
-                HomePage();
+                new HomePage();
             }
             break;
         case 2:
-//                komt zo
-            HomePage();
+        // Implement rating hoog - laag
             break;
         case 3:
-            // wip
-            HomePage();
+            // Implement rating laag - hoog
             break;
         case 4:
-            HomePage();
+            new HomePage();
             break;
         default:
             System.out.println("Invoer niet herkent, probeer het opnieuw.");
@@ -97,31 +97,23 @@ class Ranglijsten{
 }
 
 class Reviews {
-    public showMenuReviews() {
-        // wipp
+    public void showMenuReviews() {
         try {
             File file = new File("reviews.csv");
-            Scanner scanner = new Scanner(file);
+            Scanner fileScanner = new Scanner(file);
 
-            while (scanner.hasNextLine()) {
-                String data = scanner.nextLine();
-                System.out.println(data); // Print each line from the CSV file
+            while (fileScanner.hasNextLine()) {
+                String data = fileScanner.nextLine();
+                System.out.println(data);
             }
 
-            scanner.close();
+            fileScanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("CSV bestand niet gevonden.");
-            HomePage();
+            new HomePage();
         }
     }
 }
-
-public static void showMenuSales() {
-    // Implement showMenuSales method
-    // infor
-}
-}
-
 
 public class Main {
     public static void main(String[] args) {
@@ -129,9 +121,10 @@ public class Main {
         HomePage homePage = new HomePage();
         Ranglijsten ranglijsten = new Ranglijsten();
         Reviews reviews = new Reviews();
-        homePage();
+        new HomePage();
         scanner.close();
     }
+}
 
 
 
