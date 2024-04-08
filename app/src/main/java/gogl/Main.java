@@ -108,7 +108,7 @@ public class Main {
 
 
     public static void showMenuReviews() {
-        // wip
+        // wipp
         try {
             File file = new File("reviews.csv");
             Scanner scanner = new Scanner(file);
